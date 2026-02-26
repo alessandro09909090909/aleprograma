@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+<link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <h2>login</h2>
-    <input type="email" id="email" placeholder="email">
-    <input type="senha" id="senha" placeholder="senha">
-    <button onclick="Login"()>Entrar</button>
-    <button onclick="Cadastro"()>Cadastrar</button>
 
+<div class="login-container">
+    <h2>Login</h2>
 
+    <input type="email" id="email" placeholder="Digite seu email">
+    <input type="password" id="senha" placeholder="Digite sua senha">
+
+    <button onclick="login()">Entrar</button>
+    <p id="mensagem"></p>
+</div>
+
+<script src="auth.js"></script>
 </body>
 </html>
