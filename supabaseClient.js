@@ -1,4 +1,4 @@
-const supabaseUrl = "SUA_URL_DO_SUPABASE";
-const supabaseKey = "SUA_ANON_PUBLIC_KEY";
+const supabaseUrl = "url:https://senlgkvwljqfrduvncov.supabase.coE";
+const supabaseKey = "anon public:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNlbmxna3Z3bGpxZnJkdXZuY292Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIxMTQwOTEsImV4cCI6MjA4NzY5MDA5MX0.skGnoVlZsuDSVqQI7EM-mRFRWyn-8lBYbqIJRxslqPs";
 
 const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
