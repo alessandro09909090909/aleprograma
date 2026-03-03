@@ -1,12 +1,8 @@
-     // Verifica se está logado
-let usuario = localStorage.getItem("usuarioLogado");
+import { supabase } from './supabaseClient.js'
 
-if(!usuario) {
-    window.location.href = "login.html";
+// Recupera o usuÃ¡rio logado. Redireciona para login se nÃ£o estiver autenticado.
+async function getUser() {
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user) window.location.href = 'login.html'
+  return user
 }
-
-// Função logout
-function logout() {
-    localStorage.removeItem("usuarioLogado");
-    window.location.href = "login.html";
-}   
