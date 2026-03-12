@@ -92,4 +92,12 @@ button{
 }
 button.houver{
     background-color: var(--cor-primaria-3);
+    @media (max-widt:360px){
+        .container{
+            padding: 1.5rem;
+        }
+        input,button {
+            font-size: 0.95rem;
+        }
+    }
 }
