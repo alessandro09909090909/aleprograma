@@ -65,5 +65,5 @@ input{
 input.focus{
     border-color: var(--cor-primaria-1);
     outline:none ;
-    box-shadow:0 0 0  3px rgba var(--cor-primaria-2);
+    box-shadow:0 0 0  3px rgb(147, 159, 163)
 }
