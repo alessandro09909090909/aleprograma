@@ -60,7 +60,7 @@ input{
     border: 1px solid var(--cor-preto);
     border-radius: var(--raio);
     font-size: 1rem;
-    transition: var(--transition),;
+    transition: var(--transition);
 
 }
 input.focus{
