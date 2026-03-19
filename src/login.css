@@ -28,8 +28,8 @@ body{
     background: #1e90bd;
     background: linear-gradient(90deg, rgba(30, 144, 189, 1) 0%, rgba(154, 87, 199, 1) 62%, rgba(237, 83, 170, 1) 100%);
     display: flex;
-    justify-content:center;
-    align-items:center;
+    justify-content: center;
+    align-items: center;
     min-height: 100vh;
     padding: 20px;
 
