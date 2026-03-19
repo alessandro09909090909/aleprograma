@@ -72,7 +72,7 @@ input.focus {
     box-shadow: 0 0 0 3px rgb(147, 159, 163);
 }
 
-botoes {
+.botoes {
     display: flex;
     flex-direction: column;
     gap: 12px;
