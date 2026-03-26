@@ -4,7 +4,7 @@
 :root {
     --cor-primaria-1: #bcccd8;
     --cor-primaria-2: #f72de6;
-    --cor-primaria-3: #A0B9BF;
+    --cor-primaria-3: #44565a;
     --cor-primaria-4: #80bfc5;
 
     --cor-branco: #ffffff;
@@ -122,7 +122,7 @@ button[onclick="logout()"]:hover {
 
 }
 #item:focus{
-        border: 1px solid var(--cor-primaria-1);
+        border: 1px solid var(--cor-primaria-1);AdicionarItem
         outline: none;
         box-shadow: 0 2px 6px var(--cor-primaria-2);
 
