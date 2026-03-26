@@ -129,7 +129,7 @@ button[onclick="logout()"]:hover {
 }
 button[onclick="adicionar item ()"]{
     padding: 12px 20px;
-    background-color: var(--cor-primaria-1);
+    background-color: var(--cor-primaria-4);
     color: var(--cor-primaria-3);
     border:none;
     border-radius: var(--raio);
