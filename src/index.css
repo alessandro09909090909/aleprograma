@@ -52,3 +52,29 @@ body {
     margin-bottom: 20px;
     border-radius: var( --raio);
 }
+.titulo{
+    font-size: clamp(1.5rem, 2vw, 2rem ) ;
+    color:(--cor-preto);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+
+}
+
+button[onclick="logout()"]{
+    align-self: flex-end;
+    margin-bottom: 1,5rem;
+    background-color:var (--cor-preto);
+    color: var(--cor-branco);
+    padding: 10px 16px;
+    border: none;
+    border-radius: var(--cor-preto);
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+
+}
+
+button[onclick="logout()"]:hover{
+    background-color: var(--cor-primaria-2);
+    
+}
