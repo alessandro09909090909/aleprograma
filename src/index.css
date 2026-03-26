@@ -46,24 +46,26 @@ body {
     max-width: 400px;
     text-align: center;
 }
-#logo{
+
+#logo {
     width: 150px;
-    height:auto;
+    height: auto;
     margin-bottom: 20px;
-    border-radius: var( --raio);
+    border-radius: var(--raio);
 }
-.titulo{
-    font-size: clamp(1.5rem, 2vw, 2rem ) ;
-    color:(--cor-preto);
+
+.titulo {
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    color: (--cor-preto);
     margin-bottom: 1.5rem;
     font-weight: 500;
 
 }
 
-button[onclick="logout()"]{
+button[onclick="logout()"] {
     align-self: flex-end;
-    margin-bottom: 1,5rem;
-    background-color:var (--cor-preto);
+    margin-bottom: 1.5rem;
+    background-color: var (--cor-preto);
     color: var(--cor-branco);
     padding: 10px 16px;
     border: none;
@@ -74,7 +76,7 @@ button[onclick="logout()"]{
 
 }
 
-button[onclick="logout()"]:hover{
+button[onclick="logout()"]:hover {
     background-color: var(--cor-primaria-2);
 
 }
