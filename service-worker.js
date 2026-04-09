@@ -1,6 +1,7 @@
 
-const CACHE_NAME = 'lista-compras-v1';
-const urlsToCache = [
+    const CACHE_NAME = 'lista-compras-v1';
+    const urlsToCache = [
+      
   '/',
   '/login.html',
   '/login.css',

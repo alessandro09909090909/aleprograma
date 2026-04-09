@@ -7,20 +7,22 @@
     "background_volor": "#ffffff" ,
     "thene_color": "#cf26df" ,
     "icons": [
+        
          {   "src" : "icons/icon-72x72.png",
             "size":"72x72",
             "type":"image/png"
     },
-
     
         {   "src" : "icons/icon-128x128.png",
             "size":"128x128",
             "type":"image/png"
     },
+
         {   "src" : "icons/icon-144x144.png",
             "size":"152x152",
             "type":"image/png"
     },
+
         {   "src" : "icons/icon-152x152.png",
             "size":"152x152",
             "type":"image/png"
@@ -35,6 +37,7 @@
             "size":"384x384",
             "type":"image/png"
     },
+
         {   "src" : "icons/icon-512x512.png",
             "size":"512x512",
             "type":"image/png"
