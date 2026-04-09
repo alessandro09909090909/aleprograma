@@ -3,9 +3,9 @@
     const urlsToCache = [
   '/',
   '/login.html',
-  'src/css/login.css',
+  'src/login.css',
   '/index.html',
-  'src/css/index.css',
+  'src/index.css',
   '/app.js',
   '/manifest.json',
   '/src/icons/icon-72x72.png',

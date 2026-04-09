@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>lISTA 2026</title>
-
+    <link rel="manifest" href="manifest.json">
     <link rel="shortcut icon" href="src/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="src/index.css">
 </head>
+
 <body>
     <div class="container">
         <H2 class="TITULO">Minha lista de compras</H2>
-        
-           <button onclick="logout()">Sair</button>
-        
-           <ul id="lista"></ul>
-           <input type="text" id="item" placeholder="novo item">
-           <button onclick="AdicionarItem()">Adicionar</button>
+
+        <button onclick="logout()">Sair</button>
+
+        <ul id="lista"></ul>
+        <input type="text" id="item" placeholder="novo item">
+        <button onclick="AdicionarItem()">Adicionar</button>
     </div>
 
-   <script type="module" src="app.js"></script>
+    <script type="module" src="app.js"></script>
 
-<script>
+    <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/service-worker.js')
@@ -34,7 +36,8 @@
             });
         }
     </script>
-    
+
 
 </body>
+
 </html>
