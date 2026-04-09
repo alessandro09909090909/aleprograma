@@ -15,7 +15,7 @@
   '/src/icons/icon-152x152.png',
   '/src/icons/icon-192x192.png',
   '/src/icons/icon-384x384.png',
-  '/src/icons/icon-512x512.png'
+  '/src/icons/icon-512x512.png',
 ];
 
 self.addEventListener('install', event => {
