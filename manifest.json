@@ -1,7 +1,7 @@
 {
     "name": "Lista de compras",
     "short_name":"listacompras",
-    "descripition": "Aplicatico de lista de compras" ,
+    "descripition": "Aplicativo de lista de compras" ,
     "start_url":"/",
     "display": "standalone", 
     "background_volor": "#ffffff" ,
@@ -20,27 +20,22 @@
             "size":"128x128",
             "type":"image/png"
     },
-
         {   "src" : "src/icons/icon-144x144.png",
             "size":"144x144",
             "type":"image/png"
     },
-
         {   "src" : "src/icons/icon-152x152.png",
             "size":"152x152",
             "type":"image/png"
     },
-
     {   "src" : "src/icons/icon-192x192.png",
             "size":"192x192",
             "type":"image/png"
-
     },
         {   "src" : "src/icons/icon-384x384.png",
             "size":"384x384",
             "type":"image/png"
     },
-
         {   "src" : "src/icons/icon-512x512.png",
             "size":"512x512",
             "type":"image/png"
