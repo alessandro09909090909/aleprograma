@@ -2,28 +2,126 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>lISTA 2026 3°SIS</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>LISTA 2026 • Login</title>
+    
     <link rel="shortcut icon" href="src/img/favicon.ico" type="image/x-icon">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="src/login.css">
-    
 </head>
 <body>
-    
-    <div class="container">
-        <img  id="logo" src="src/icons/icon-512x512.png" alt="logo">
-        <h2 class="TITULO">Login</h2>
-        <input type="email" id="email" placeholder="E-mail">
-        <input type="password" id="senha" placeholder="Senha">
-
-        <div class="botoes">
-            <button onclick="login()">Entra ai bb</button>
-            <button onclick="cadastro()">Cadastra ai bb</button>
+    <div class="login-container">
+        <!-- Decorative background blobs -->
+        <div class="bg-blob blob-1"></div>
+        <div class="bg-blob blob-2"></div>
+        <div class="bg-blob blob-3"></div>
+        
+        <div class="login-card">
+            <div class="logo-wrapper">
+                <img id="logo" src="src/icons/icon-512x512.png" alt="LISTA 2026">
+                <div class="logo-glow"></div>
+            </div>
+            
+            <div class="header-text">
+                <h1 class="welcome-title">Bem-vindo de volta</h1>
+                <p class="welcome-subtitle">Acesse sua lista de compras compartilhada</p>
+            </div>
+            
+            <form id="loginForm" class="login-form">
+                <!-- Email Field -->
+                <div class="input-group">
+                    <input type="email" id="email" class="input-field" placeholder=" " required autocomplete="email">
+                    <label for="email" class="input-label">
+                        <svg class="input-icon" viewBox="0 0 24 24" width="18" height="18">
+                            <path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                        <span>E-mail</span>
+                    </label>
+                    <div class="input-highlight"></div>
+                </div>
+                
+                <!-- Password Field -->
+                <div class="input-group">
+                    <input type="password" id="senha" class="input-field" placeholder=" " required autocomplete="current-password">
+                    <label for="senha" class="input-label">
+                        <svg class="input-icon" viewBox="0 0 24 24" width="18" height="18">
+                            <path fill="currentColor" d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                        </svg>
+                        <span>Senha</span>
+                    </label>
+                    <button type="button" class="toggle-password" aria-label="Mostrar senha" tabindex="-1">
+                        <svg class="eye-icon" viewBox="0 0 24 24" width="20" height="20">
+                            <path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                        </svg>
+                    </button>
+                    <div class="input-highlight"></div>
+                </div>
+                
+                <!-- Forgot Password Link -->
+                <a href="#" class="forgot-link">Esqueceu a senha?</a>
+                
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button type="submit" class="btn btn-primary" onclick="login()">
+                        <span>Entrar</span>
+                        <svg class="btn-arrow" viewBox="0 0 24 24" width="18" height="18">
+                            <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                        </svg>
+                    </button>
+                    
+                    <div class="divider">
+                        <span>ou</span>
+                    </div>
+                    
+                    <button type="button" class="btn btn-secondary" onclick="cadastro()">
+                        <svg class="btn-icon" viewBox="0 0 24 24" width="18" height="18">
+                            <path fill="currentColor" d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                        <span>Criar nova conta</span>
+                    </button>
+                </div>
+            </form>
+            
+            <div class="login-footer">
+                <p class="footer-text">© 2026 LISTA • Compartilhe suas compras</p>
+            </div>
         </div>
     </div>
 
     <script type="module" src="auth.js"></script>
+    
+    <!-- Password Toggle Script -->
+    <script>
+        (function() {
+            const toggleBtn = document.querySelector('.toggle-password');
+            const passwordInput = document.getElementById('senha');
+            
+            if (toggleBtn && passwordInput) {
+                toggleBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                    passwordInput.setAttribute('type', type);
+                    
+                    const eyeIcon = this.querySelector('.eye-icon');
+                    if (type === 'text') {
+                        eyeIcon.innerHTML = '<path fill="currentColor" d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78l3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z"/>';
+                    } else {
+                        eyeIcon.innerHTML = '<path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>';
+                    }
+                });
+            }
+            
+            // Prevent form submission for demo
+            const form = document.getElementById('loginForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    if (typeof login === 'function') {
+                        login();
+                    }
+                });
+            }
+        })();
+    </script>
 </body>
 </html>
