@@ -71,7 +71,6 @@
                     <!-- Botão Mostrar/Ocultar Senha -->
                     <button type="button" class="toggle-password" aria-label="Mostrar senha" tabindex="-1">
                         <svg class="eye-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-                            <!-- Olho aberto (padrão) -->
                             <path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
                         </svg>
                     </button>
@@ -111,7 +110,7 @@
         </div>
     </div>
 
-    <!-- Supabase Client -->
+    <!-- Script de Autenticação -->
     <script type="module">
         import { supabase } from './supabaseClient.js';
         
@@ -120,7 +119,6 @@
         // ==========================================
         const loginForm = document.getElementById('loginForm');
         const loginBtn = document.getElementById('loginBtn');
-        const cadastroBtn = document.getElementById('cadastroBtn');
         const emailInput = document.getElementById('email');
         const senhaInput = document.getElementById('senha');
         const emailError = document.getElementById('email-error');
@@ -159,6 +157,8 @@
             senhaError.textContent = '';
             emailInput.classList.remove('input-error');
             senhaInput.classList.remove('input-error');
+            // Restaura cor do email-error se tiver sido alterada pelo cadastro
+            emailError.style.color = '';
         }
         
         function showError(input, errorElement, message) {
@@ -169,6 +169,7 @@
                 <span>${message}</span>
             `;
             errorElement.style.display = 'flex';
+            errorElement.style.color = ''; // Restaura cor de erro
             input.classList.add('input-error');
             
             // Animação de shake
@@ -190,7 +191,7 @@
         // ==========================================
         // Função de Login
         // ==========================================
-        async function login() {
+        async function realizarLogin() {
             clearErrors();
             
             const email = emailInput.value.trim();
@@ -217,16 +218,19 @@
             setLoading(true);
             
             try {
-                const { error } = await supabase.auth.signInWithPassword({ 
+                const { data, error } = await supabase.auth.signInWithPassword({ 
                     email, 
                     password: senha 
                 });
                 
                 if (error) {
-                    if (error.message.includes('Invalid login')) {
+                    // Tratamento específico para cada tipo de erro
+                    const errorMsg = error.message.toLowerCase();
+                    
+                    if (errorMsg.includes('invalid login') || errorMsg.includes('invalid credentials')) {
                         showError(emailInput, emailError, '');
                         showError(senhaInput, senhaError, 'E-mail ou senha incorretos');
-                    } else if (error.message.includes('Email not confirmed')) {
+                    } else if (errorMsg.includes('email not confirmed')) {
                         showError(emailInput, emailError, 'E-mail não confirmado. Verifique sua caixa de entrada');
                     } else {
                         showError(emailInput, emailError, error.message);
@@ -248,7 +252,7 @@
         // ==========================================
         // Função de Cadastro
         // ==========================================
-        async function cadastro() {
+        async function realizarCadastro() {
             clearErrors();
             
             const email = emailInput.value.trim();
@@ -277,7 +281,7 @@
             setLoading(true);
             
             try {
-                const { error } = await supabase.auth.signUp({ 
+                const { data, error } = await supabase.auth.signUp({ 
                     email, 
                     password: senha 
                 });
@@ -294,8 +298,11 @@
                     </svg>
                     <span>Cadastro realizado! Verifique seu e-mail para confirmar.</span>
                 `;
-                emailError.style.color = 'var(--color-success)';
                 emailError.style.display = 'flex';
+                emailError.style.color = 'var(--color-success)';
+                
+                // Limpa campo de senha
+                senhaInput.value = '';
                 
             } catch (err) {
                 showError(emailInput, emailError, 'Erro de conexão. Verifique sua internet.');
@@ -307,4 +314,23 @@
         
         // ==========================================
         // Event Listeners
-        //
+        // ==========================================
+        
+        // Intercepta o submit do formulário (EVITA RECARREGAMENTO!)
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // ← ISTO É CRUCIAL: impede o recarregamento
+            realizarLogin();
+        });
+        
+        // Botão de Cadastro
+        document.getElementById('cadastroBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            realizarCadastro();
+        });
+        
+        // Limpa erros ao digitar
+        emailInput.addEventListener('input', clearErrors);
+        senhaInput.addEventListener('input', clearErrors);
+    </script>
+</body>
+</html>
