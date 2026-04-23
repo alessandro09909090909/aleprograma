@@ -3,78 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta name="theme-color" content="#0f0f1a">
     <title>LISTA 2026 • Login</title>
     
     <link rel="shortcut icon" href="src/img/favicon.ico" type="image/x-icon">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="src/login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="login-container">
-        <!-- Decorative background blobs -->
-        <div class="bg-blob blob-1"></div>
-        <div class="bg-blob blob-2"></div>
-        <div class="bg-blob blob-3"></div>
-        
         <div class="login-card">
+            <!-- Logo -->
             <div class="logo-wrapper">
-                <img id="logo" src="src/icons/icon-512x512.png" alt="LISTA 2026">
+                <img src="src/icons/icon-512x512.png" alt="LISTA 2026" width="72" height="72">
                 <div class="logo-glow"></div>
             </div>
             
+            <!-- Cabeçalho -->
             <div class="header-text">
                 <h1 class="welcome-title">Bem-vindo de volta</h1>
-                <p class="welcome-subtitle">Acesse sua lista de compras compartilhada</p>
+                <p class="welcome-subtitle">Entre para gerenciar suas listas compartilhadas</p>
             </div>
             
-            <form id="loginForm" class="login-form">
-                <!-- Email Field -->
+            <!-- Formulário -->
+            <form id="loginForm" class="login-form" novalidate>
+                <!-- Email -->
                 <div class="input-group">
-                    <input type="email" id="email" class="input-field" placeholder=" " required autocomplete="email">
+                    <input 
+                        type="email" 
+                        id="email" 
+                        class="input-field" 
+                        placeholder=" " 
+                        required 
+                        autocomplete="email"
+                        aria-label="Endereço de e-mail"
+                    >
                     <label for="email" class="input-label">
-                        <svg class="input-icon" viewBox="0 0 24 24" width="18" height="18">
+                        <svg class="input-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
                             <path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                         </svg>
                         <span>E-mail</span>
                     </label>
-                    <div class="input-highlight"></div>
+                    <div id="email-error" class="error-message"></div>
                 </div>
                 
-                <!-- Password Field -->
+                <!-- Senha -->
                 <div class="input-group">
-                    <input type="password" id="senha" class="input-field" placeholder=" " required autocomplete="current-password">
+                    <input 
+                        type="password" 
+                        id="senha" 
+                        class="input-field" 
+                        placeholder=" " 
+                        required 
+                        autocomplete="current-password"
+                        aria-label="Senha"
+                    >
                     <label for="senha" class="input-label">
-                        <svg class="input-icon" viewBox="0 0 24 24" width="18" height="18">
+                        <svg class="input-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
                             <path fill="currentColor" d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
                         </svg>
                         <span>Senha</span>
                     </label>
+                    
+                    <!-- Botão Mostrar/Ocultar Senha -->
                     <button type="button" class="toggle-password" aria-label="Mostrar senha" tabindex="-1">
-                        <svg class="eye-icon" viewBox="0 0 24 24" width="20" height="20">
+                        <svg class="eye-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                            <!-- Olho aberto (padrão) -->
                             <path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
                         </svg>
                     </button>
-                    <div class="input-highlight"></div>
+                    <div id="senha-error" class="error-message"></div>
                 </div>
                 
-                <!-- Forgot Password Link -->
+                <!-- Link Esqueceu Senha -->
                 <a href="#" class="forgot-link">Esqueceu a senha?</a>
                 
-                <!-- Action Buttons -->
+                <!-- Botões -->
                 <div class="action-buttons">
-                    <button type="submit" class="btn btn-primary" onclick="login()">
-                        <span>Entrar</span>
-                        <svg class="btn-arrow" viewBox="0 0 24 24" width="18" height="18">
+                    <button type="submit" class="btn btn-primary" id="loginBtn">
+                        <span class="btn-text">Entrar</span>
+                        <svg class="btn-arrow" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
                             <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
                         </svg>
+                        <div class="btn-spinner"></div>
                     </button>
                     
                     <div class="divider">
                         <span>ou</span>
                     </div>
                     
-                    <button type="button" class="btn btn-secondary" onclick="cadastro()">
-                        <svg class="btn-icon" viewBox="0 0 24 24" width="18" height="18">
+                    <button type="button" class="btn btn-secondary" id="cadastroBtn">
+                        <svg class="btn-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
                             <path fill="currentColor" d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                         </svg>
                         <span>Criar nova conta</span>
@@ -82,46 +104,207 @@
                 </div>
             </form>
             
+            <!-- Rodapé -->
             <div class="login-footer">
                 <p class="footer-text">© 2026 LISTA • Compartilhe suas compras</p>
             </div>
         </div>
     </div>
 
-    <script type="module" src="auth.js"></script>
-    
-    <!-- Password Toggle Script -->
-    <script>
-        (function() {
-            const toggleBtn = document.querySelector('.toggle-password');
-            const passwordInput = document.getElementById('senha');
+    <!-- Supabase Client -->
+    <script type="module">
+        import { supabase } from './supabaseClient.js';
+        
+        // ==========================================
+        // Elementos do DOM
+        // ==========================================
+        const loginForm = document.getElementById('loginForm');
+        const loginBtn = document.getElementById('loginBtn');
+        const cadastroBtn = document.getElementById('cadastroBtn');
+        const emailInput = document.getElementById('email');
+        const senhaInput = document.getElementById('senha');
+        const emailError = document.getElementById('email-error');
+        const senhaError = document.getElementById('senha-error');
+        const togglePasswordBtn = document.querySelector('.toggle-password');
+        
+        // ==========================================
+        // Toggle Mostrar/Ocultar Senha
+        // ==========================================
+        togglePasswordBtn.addEventListener('click', () => {
+            const isPassword = senhaInput.type === 'password';
+            senhaInput.type = isPassword ? 'text' : 'password';
             
-            if (toggleBtn && passwordInput) {
-                toggleBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-                    passwordInput.setAttribute('type', type);
-                    
-                    const eyeIcon = this.querySelector('.eye-icon');
-                    if (type === 'text') {
-                        eyeIcon.innerHTML = '<path fill="currentColor" d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78l3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z"/>';
+            const eyeIcon = togglePasswordBtn.querySelector('.eye-icon');
+            
+            if (isPassword) {
+                // Ícone olho fechado (senha visível)
+                eyeIcon.innerHTML = `
+                    <path fill="currentColor" d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78l3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z"/>
+                `;
+                togglePasswordBtn.setAttribute('aria-label', 'Ocultar senha');
+            } else {
+                // Ícone olho aberto (senha oculta)
+                eyeIcon.innerHTML = `
+                    <path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                `;
+                togglePasswordBtn.setAttribute('aria-label', 'Mostrar senha');
+            }
+        });
+        
+        // ==========================================
+        // Funções de Validação e Feedback
+        // ==========================================
+        function clearErrors() {
+            emailError.textContent = '';
+            senhaError.textContent = '';
+            emailInput.classList.remove('input-error');
+            senhaInput.classList.remove('input-error');
+        }
+        
+        function showError(input, errorElement, message) {
+            errorElement.innerHTML = `
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+                    <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                </svg>
+                <span>${message}</span>
+            `;
+            errorElement.style.display = 'flex';
+            input.classList.add('input-error');
+            
+            // Animação de shake
+            input.style.animation = 'none';
+            input.offsetHeight; // Trigger reflow
+            input.style.animation = 'shakeError 0.4s ease';
+        }
+        
+        function setLoading(isLoading) {
+            if (isLoading) {
+                loginBtn.classList.add('loading');
+                loginBtn.disabled = true;
+            } else {
+                loginBtn.classList.remove('loading');
+                loginBtn.disabled = false;
+            }
+        }
+        
+        // ==========================================
+        // Função de Login
+        // ==========================================
+        async function login() {
+            clearErrors();
+            
+            const email = emailInput.value.trim();
+            const senha = senhaInput.value;
+            let hasError = false;
+            
+            // Validação client-side
+            if (!email) {
+                showError(emailInput, emailError, 'O e-mail é obrigatório');
+                hasError = true;
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                showError(emailInput, emailError, 'Formato de e-mail inválido');
+                hasError = true;
+            }
+            
+            if (!senha) {
+                showError(senhaInput, senhaError, 'A senha é obrigatória');
+                hasError = true;
+            }
+            
+            if (hasError) return;
+            
+            // Autenticação com Supabase
+            setLoading(true);
+            
+            try {
+                const { error } = await supabase.auth.signInWithPassword({ 
+                    email, 
+                    password: senha 
+                });
+                
+                if (error) {
+                    if (error.message.includes('Invalid login')) {
+                        showError(emailInput, emailError, '');
+                        showError(senhaInput, senhaError, 'E-mail ou senha incorretos');
+                    } else if (error.message.includes('Email not confirmed')) {
+                        showError(emailInput, emailError, 'E-mail não confirmado. Verifique sua caixa de entrada');
                     } else {
-                        eyeIcon.innerHTML = '<path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>';
+                        showError(emailInput, emailError, error.message);
                     }
-                });
+                    return;
+                }
+                
+                // Sucesso - redireciona
+                window.location.href = 'index.html';
+                
+            } catch (err) {
+                showError(emailInput, emailError, 'Erro de conexão. Verifique sua internet.');
+                console.error('Erro inesperado:', err);
+            } finally {
+                setLoading(false);
+            }
+        }
+        
+        // ==========================================
+        // Função de Cadastro
+        // ==========================================
+        async function cadastro() {
+            clearErrors();
+            
+            const email = emailInput.value.trim();
+            const senha = senhaInput.value;
+            let hasError = false;
+            
+            // Validação
+            if (!email) {
+                showError(emailInput, emailError, 'O e-mail é obrigatório');
+                hasError = true;
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                showError(emailInput, emailError, 'Formato de e-mail inválido');
+                hasError = true;
             }
             
-            // Prevent form submission for demo
-            const form = document.getElementById('loginForm');
-            if (form) {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    if (typeof login === 'function') {
-                        login();
-                    }
-                });
+            if (!senha) {
+                showError(senhaInput, senhaError, 'A senha é obrigatória');
+                hasError = true;
+            } else if (senha.length < 6) {
+                showError(senhaInput, senhaError, 'A senha deve ter no mínimo 6 caracteres');
+                hasError = true;
             }
-        })();
-    </script>
-</body>
-</html>
+            
+            if (hasError) return;
+            
+            setLoading(true);
+            
+            try {
+                const { error } = await supabase.auth.signUp({ 
+                    email, 
+                    password: senha 
+                });
+                
+                if (error) {
+                    showError(emailInput, emailError, error.message);
+                    return;
+                }
+                
+                // Feedback de sucesso
+                emailError.innerHTML = `
+                    <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+                        <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                    <span>Cadastro realizado! Verifique seu e-mail para confirmar.</span>
+                `;
+                emailError.style.color = 'var(--color-success)';
+                emailError.style.display = 'flex';
+                
+            } catch (err) {
+                showError(emailInput, emailError, 'Erro de conexão. Verifique sua internet.');
+                console.error('Erro inesperado:', err);
+            } finally {
+                setLoading(false);
+            }
+        }
+        
+        // ==========================================
+        // Event Listeners
+        //
